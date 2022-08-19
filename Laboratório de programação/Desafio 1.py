@@ -65,12 +65,18 @@ while ligado:
             nome = input('Digite o nome do funcionário: ')
 
             if nome == None:
-                print('O nome não pode está vazio\n')
+                print('O nome não pode está vazio.\n')
                 erro = input('Deseja ver a ajuda, [S] Sim [N] Não :')
                 if erro == 'S' or erro == 's':
                     ajuda()
+            elif '!' in nome or '@' in nome or '#' in nome or '$' in nome or '%' in nome or '¨' in nome or '&' in nome or '*' in nome or '(' in nome or ')' in nome or '-' in nome or '_' in nome or '=' in nome or '+' in nome or '\\' in nome or ',' in nome or '.' in nome or '<' in nome or '>' in nome or ';' in nome or ':' in nome or '/' in nome or '?' in nome or '|' in nome or '[' in nome or ']' in nome or '{' in nome or '}' in nome:
+                print('O nome não pode conter caracteres especiais.\n')
+                erro = input('Deseja ver a ajuda, [S] Sim [N] Não :')
+                if erro == 'S' or erro == 's':
+                    ajuda()
+
             elif nome.isnumeric() == True:
-                print('O nome não pode conter números\n')
+                print('O nome não pode conter números.\n')
                 erro = input('Deseja ver a ajuda, [S] Sim [N] Não :')
                 if erro == 'S' or erro == 's':
                     ajuda()
@@ -83,7 +89,7 @@ while ligado:
                         quanthoras = int(input('Digite a quantidade de horas inteiras: '))
 
                         valor_total = Calculo(valorhoras, quanthoras)
-                        print('O funcionário {} vai receber R${}'.format(nome, valor_total))
+                        print(f'O funcionário {nome} vai receber R${valor_total:.2f}')
                     else:
                         valorhoras = float(valorhoras)
                     
@@ -95,14 +101,14 @@ while ligado:
                 except error as ex:
                     log = open('log.txt' 'w')
                     log.write(error, ':',datetime.datetime.now)
-                    print('O valor informado está errado\n')
+                    print('O valor informado está errado.\n')
                     erro = input('Deseja ver a ajuda, [S] Sim [N] Não :')
                     if erro == 'S' or erro == 's':
                         ajuda()
         except error as ex:
             log = open('log.txt' 'w')
             log.write(error, ':', datetime.datetime.now)
-            print('Algum dado esta errado!!')
+            print('Algo de errado não esta certo!!')
             erro = input('Deseja ver a ajuda, [S] Sim [N] Não :')
             if erro == 'S' or erro == 's':
                 ajuda()
